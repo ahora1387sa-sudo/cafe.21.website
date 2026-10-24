@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>https://CAFE21.com</title>
+<style>
+
+:root {
+--page: #141518;
+--panel: #005e00;
+--panel-hover: #04a804;
+--text: #ffffff;
+--muted: #ffffff;
+--red: #008f0c;
+--red-soft: #ffffff;
+--line: #414145;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+margin: 0;
+width: 100%;
+overflow-x: hidden;
+background: var(--page);
+color: var(--text);
+font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+.site-header {
+position: sticky;
+top: 0;
+z-index: 1000;
+background: rgba(25, 26, 30, .97);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid #343438;
+}
+.topbar {
+height: 94px;
+max-width: 1200px;
+padding: 0 28px;
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 18px;
+}
+.icon-button {
+width: 48px;
+height: 48px;
+border: 0;
+color: white;
+background: transparent;
+display: grid;
+place-items: center;
+border-radius: 12px;
+font-size: 30px;
+}
+.icon-button:hover { background: #2d2e33; }
+.brand {
+display: flex;
+align-items: center;
+gap: 12px;
+font-size: clamp(19px, 3vw, 30px);
+font-weight: 800;
+white-space: nowrap;
+}
+.brand-icon { font-size: 31px; }
+.main-nav {
+position: relative;
+display: flex;
+gap: 0;
+overflow-x: auto;
+overflow-y: hidden;
+scrollbar-width: none;
+border-top: 1px solid #292a2e;
+border-bottom: 4px solid transparent;
+flex-shrink: 0;
+}
+
+
+.main-nav .nav-indicator {
+position: absolute;
+bottom: 0;
+left: 0;
+right: auto;
+height: 4px;
+width: 0;
+background: var(--red);
+pointer-events: none;
+transition: left .28s ease, width .28s ease;
+z-index: 2;
+}
+.main-nav::-webkit-scrollbar { display: none; }
+.main-nav a {
+flex: 0 0 auto;
+padding: 19px 25px 17px;
+color: #ffffff;
+text-decoration: none;
+font-size: 19PX;
+border-bottom: 5px solid transparent;
+position: relative;
+z-index: 1;
+}
+.main-nav a.active {
+color: #fff;
+font-weight: 800;
+}
+.subnav-wrap {
+background: #1c1d21;
+box-shadow: 0 10px 24px rgba(0,0,0,.15);
+}
+.subnav {
+max-width: 1200px;
+margin: auto;
+padding: 16px 28px;
+display: flex;
+align-items: center;
+gap: 12px;
+overflow-x: auto;
+scrollbar-width: none;
+}
+.subnav button {
+flex: 0 0 auto;
+padding: 13px 22px;
+border: 0;
+border-radius: 30px;
+color: #d8d8da;
+background: transparent;
+font-size: 17px;
+}
+.subnav button.active {
+color: #222;
+background: #fff;
+font-weight: 800;
+padding-inline: 31px;
+}
+main {
+max-width: 1200px;
+margin: 0 auto;
+padding: 22px 28px 90px;
+}
+.section { scroll-margin-top: 150px; margin-bottom: 48px; }
+.section-title {
+font-size: clamp(23px, 3vw, 32px);
+font-weight: 600;
+margin: 24px 0 28px;
+}
+.menu-list { display: grid; gap: 24px; }
+.food-card {
+min-height: 218px;
+padding: 24px 28px;
+border-radius: 30px;
+background: var(--panel);
+display: flex;
+align-items: center;
+gap: 24px;
+transition: background .2s, transform .2s;
+}
+.food-card:hover { background: var(--panel-hover); transform:translateY(-2px); }
+.food-card img {
+width: 180px;
+aspect-ratio: 1 / 1;
+height: auto;
+object-fit: cover;
+flex-shrink: 0;
+border-radius: 20px;
+order: 2;
+}
+.food-info { flex: 1; min-width: 0; }
+.food-title-row {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+flex-wrap: wrap;
+gap: 12px;
+margin-bottom: 12px;
+}
+.food-title { font-size: clamp(22px, 2.5vw, 30px); font-weight:800; margin: 0; }
+.discount { color: var(--red-soft); font-size: 24px; }
+.description {
+color: var(--muted);
+font-size: clamp(15px, 1.8vw, 21px);
+line-height: 1.9;
+margin: 0 0 24px;
+}
+.food-bottom {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 16px;
+flex-wrap: wrap;
+}
+.price { font-size: 22px; font-weight: 800; white-space: nowrap;}.search-fab {
+position: fixed;
+left: 28px;
+bottom: 28px;
+z-index: 30;
+width: 78px;
+height: 78px;
+border: 0;
+border-radius: 50%;
+background: #c1cac1;
+color: #111;
+display: grid;
+place-items: center;
+box-shadow: 0 8px 25px rgba(0,0,0,.35);
+}
+.search-fab svg {
+display: block;
+width: 31px;
+height: 31px;
+fill: none;
+stroke: #111;
+stroke-width: 1.8;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+.search-panel {
+position: fixed;
+z-index: 29;
+left: 24px;
+bottom: 118px;
+width: min(390px, calc(100vw - 48px));
+padding: 14px;
+border: 1px solid #011e7c;
+border-radius: 18px;
+background: rgb(189, 175, 221);
+box-shadow: 0 12px 36px rgb(1, 196, 33);
+display: none;
+}
+.search-panel.open { display: block; }
+.search-panel input {
+width: 100%;
+border: 1px solid #11119b;
+border-radius: 12px;
+padding: 13px 15px;
+outline: none;
+color: white;
+background: #191a1e;
+}
+.search-panel input:focus { border-color: #4404bb; }
+.toast {
+position: fixed;
+right: 50%;
+bottom: 25px;
+transform: translate(50%, 20px);
+background: #ffffff;
+color: #202020;
+padding: 12px 20px;
+border-radius: 14px;
+opacity: 0;
+pointer-events: none;
+transition: .25s;
+z-index: 50;
+box-shadow: 0 8px 24px #0005;
+}
+.toast.show { opacity: 1; transform: translate(50%, 0); }
+.cart-count {
+display: inline-grid;
+place-items: center;
+min-width: 22px;
+height: 22px;
+padding: 0 5px;
+margin-right: 5px;
+border-radius: 20px;
+background: var(--red);
+color: white;
+font-size: 12px;
+vertical-align: middle;
+}
+.empty-message { display: none; color: var(--muted); padding:18px0; }
+@media (max-width: 640px) {
+.topbar { height: 78px; padding: 0 14px; gap: 8px; }
+.brand { gap: 7px; font-size: 20px; }
+.brand-icon { font-size: 25px; }
+.icon-button { width: 38px; height: 42px; font-size: 27px;}.main-nav a { padding: 16px 18px 13px; font-size: 17px; }
+.subnav { padding: 12px 15px; gap: 4px; }
+.subnav button { padding: 11px 15px; font-size: 15px; }
+main { padding: 15px 14px 80px; }
+.section { margin-bottom: 38px; scroll-margin-top: 175px; }.section-title { margin: 22px 0 22px; }
+.menu-list { gap: 18px; }
+.food-card {
+min-height: 0;
+padding: 22px 18px;
+border-radius: 25px;
+gap: 14px;
+}
+.food-card img {
+width: clamp(80px, 25vw, 130px);
+border-radius: 20px;
+aspect-ratio:1 / 1;
+}
+.food-title { font-size: 21px; }
+.food-title-row { gap: 7px; margin-bottom: 8px; }
+.description { font-size: 15px; line-height: 1.8; margin-bottom:16px; }
+.price { font-size: 18px; }
+.food-bottom { gap: 10px; }
+.search-fab { width: 65px; height: 65px; left: 18px; bottom:18px; }
+.search-fab svg { width: 27px; height: 27px; }
+}
+@media (max-width: 390px) {
+.food-card { padding: 17px 13px; gap: 11px; }
+.food-card img { width: 86px; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.food-title { font-size: 18px; }
+.description { font-size: 13px; }
+.price { font-size: 16px; }
+}
+
+.brand img{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.search-panel input { font-size: 16px; }
+@media (max-width: 640px) {
+  .topbar { height: 72px; padding: 0 8px; gap: 4px; }
+  .brand { min-width: 0; gap: 5px; font-size: clamp(14px, 4vw, 19px); }
+  .brand img { width: 42px; height: 42px; }
+  .icon-button { flex-shrink: 0; }
+}
+
+
+
+
+
+/* پنل کناری اطلاعات کافه */
+.drawer-backdrop {
+  position: fixed; inset: 0; z-index: 1998;
+  background: rgba(0,0,0,.58); opacity: 0; visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+.side-drawer {
+  position: fixed; z-index: 1999; top: 0; left: 0;
+  width: min(340px, 86vw); height: 100dvh; overflow-y: auto;
+  padding: 24px 20px; background: #191a1e; color: #fff;
+  border-right: 1px solid #414145;
+  transform: translateX(-105%); transition: transform .28s ease;
+  box-shadow: 12px 0 35px rgba(0,0,0,.35);
+}
+body.drawer-open .side-drawer { transform: translateX(0); }
+body.drawer-open .drawer-backdrop { opacity: 1; visibility: visible; }
+.drawer-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
+.drawer-head h2 { margin:0; font-size:22px; }
+.drawer-close { border:0; border-radius:10px; width:40px; height:40px; background:#2d2e33; color:#fff; font-size:26px; }
+.drawer-block { padding:16px 0; border-top:1px solid #414145; line-height:1.9; }
+.drawer-block h3 { margin:0 0 8px; color:#36c447; font-size:17px; }
+.drawer-block p { margin:0; color:#ddd; font-size:14px; }
+@media (prefers-reduced-motion: reduce) { .side-drawer, .drawer-backdrop { transition:none; } }
+
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="topbar">
+<button class="icon-button" aria-label="بازگشت"
+onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">‹</button>
+<div class="brand"><img src="21cafe.jpg" alt=""><span>منوی آنلاین کافه 21</span><span
+class="brand-icon"></span></div>
+<button class="icon-button" aria-label="منو"
+id="menuButton">☰</button>
+</div>
+<nav class="main-nav" aria-label="اصلی دستهبندی">
+<a href="#esperso">بر پایه اسپرسو</a>
+<a href="#boba">بوبا و بابل تی</a>
+<a href="#sandwich">خوشمزه های تابستونی</a>
+<a href="#fries">آیس کافی</a>
+<a href="#cake">کیک کوکی</a>
+<a href="#shake">شیک</a>
+<a href="#bar-garm">بار گرم</a>
+<a href="#bar-sard">بار سرد</a>
+<a href="#chay-bar">چای بار</a>
+
+
+<span class="nav-indicator" aria-hidden="true"></span>
+</nav>
+</header>
+<div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+<aside class="side-drawer" id="sideDrawer" aria-label="اطلاعات کافه" aria-hidden="true">
+  <div class="drawer-head"><h2>کافه ۲۱</h2><button class="drawer-close" id="drawerClose" type="button" aria-label="بستن منو">×</button></div>
+  <section class="drawer-block"><h3>درباره کافه</h3><p>متن معرفی کافه  کن.</p></section>
+  <section class="drawer-block"><h3>آدرس کافه</h3><p>هشتگرد قدیم . بعثت . هدایت 5 شرقی</p></section>
+  <section class="drawer-block"><h3>ساعات کاری</h3><p>روزها و ساعت فعالیت کافه    .</p></section>
+  <section class="drawer-block"><h3>راه‌های ارتباطی</h3><p>شماره تماس یا شناسه شبکه اجتماعی کافه.</p></section>
+</aside>
+<main>
+<section class="section" id="esperso">
+<h2 class="section-title">بر پایه اسپرسو</h2>
+<div class="menu-list">
+
+<article class="food-card" data-name="اسپرسو">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+اسپرسو</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">70-90 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="عربیکا">
+<img 
+src="arabica.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+عربیکا</h3></div>
+<p class="description">قهوه عربیکا </p><div class="food-bottom">
+<span class="price">120-160 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="برند">
+<img 
+src="ac.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+برند</h3></div>
+<p class="description">قهوه برند </p><div class="food-bottom">
+<span class="price">120-160 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="ترک">
+<img 
+src="turk.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+ترک</h3></div>
+<p class="description">قهوه ترک </p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آمریکانو">
+<img 
+src="am.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آمریکانو</h3></div>
+<p class="description">قهوه آمریکانو</p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="کاپوچینو">
+<img 
+src="bo.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+کاپوچینو</h3></div>
+<p class="description">قهوه اسپرسو + شیر </p><div class="food-bottom">
+<span class="price">130-140 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="موکا">
+<img 
+src="moka.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+موکا</h3></div>
+<p class="description">اسپرسو. شیر. سیروپ. شکلات</p><div class="food-bottom">
+<span class="price">140-150 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="نسکافه">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+نسکافه</h3></div>
+<p class="description">نسکافه</p><div class="food-bottom">
+<span class="price">120-140 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="ماکیاتو">
+<img 
+src="makiato.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+ماکیاتو</h3></div>
+<p class="description">ماکیاتو</p><div class="food-bottom">
+<span class="price">130-160 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لاته">
+<img 
+src="bac21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لاته</h3></div>
+<p class="description">قهوه لاته </p><div class="food-bottom">
+<span class="price">130-140 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لاته زعفران">
+<img 
+src="zaferon.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لاته زعفران</h3></div>
+<p class="description">لاته </p><div class="food-bottom">
+<span class="price">150-170 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لاته توت فرنگی">
+<img 
+src="late tot.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لاته توت فرنگی</h3></div>
+<p class="description">  </p><div class="food-bottom">
+<span class="price">150-170 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لاته وانیل">
+<img 
+src="late.png">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لاته وانیل</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">150-170 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لاته نارگیل">
+<img 
+src="nargil.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لاته نارگیل</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">160-180 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لاته ماچا">
+<img 
+src="macha.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لاته ماچا</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="اسپرولینا">
+<img 
+src="esperolina.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+اسپرولینا</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آفوگاتو">
+<img 
+src="afogato.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آفوگاتو</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">160 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="V60">
+<img 
+src="v60.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+V60</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="Cold Brew">
+<img 
+src="esperolina.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+Cold Brew</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">250 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+
+
+</div>
+</section>
+<section class="section" id="boba">
+<h2 class="section-title">بوبا و بابل تی</h2>
+<div class="menu-list">
+
+<article class="food-card" data-name="نوتلا">
+<img
+src="no.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+نوتلا</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="توت فرنگی">
+<img 
+src="tot.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+توت فرنگی</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">70-90 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شکلات">
+<img 
+src="shocolat.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شکلات</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="نسکافه">
+<img 
+src="bo.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+نسکافه</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="معجون پسته">
+<img 
+src="majon.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+معجون پسته</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">300 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لوتوس">
+<img 
+src="lotos.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لوتوس</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">300 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="بلوبری">
+<img 
+src="blubery.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+بلوبری</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">280 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="اورئو">
+<img 
+src="oreo.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+اورئو</h3></div>
+<p class="description">بیسکوییت اورئو + بستنی وانیل</p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شاتوت رزبری">
+<img 
+src="bo.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شاتوت رزبری</h3></div>
+<p class="description">قهوه اسپرسو لیوانی</p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="وانیل کوکی">
+<img 
+src="biscof.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+وانیل کوکی</h3></div>
+<p class="description">وانیل + بیسکوییت</p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="کارامل">
+<img 
+src="bc.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+کارامل</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+
+<article class="food-card" data-name="انبه">
+<img 
+src="bc.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+انبه</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+</div>
+</section>
+<section class="section" id="sandwich">
+<h2 class="section-title">خوشمزه های تابستونی</h2>
+<div class="menu-list">
+
+
+
+<article class="food-card" data-name="آیس هندوانه">
+<img 
+src="hendone.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس هندوانه</h3></div>
+<p class="description">آب هندوانه + سیروپ نارگیل + یخ</p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+
+<article class="food-card" data-name="آب زرشک">
+<img 
+src="zereshk2.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آب زرشک</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آب آلبالو">
+<img 
+src="albalo2.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آب آلبالو</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آب انار">
+<img 
+src="anar.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آب انار</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شاتوت تمشک">
+<img 
+src="shatot.png">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شاتوت تمشک</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آلو جنگلی">
+<img 
+src="alo.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آلو جنگلی</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="زغال اخته">
+<img 
+src="zoghal.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+زغال اخته</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="بستنی اسکوپی">
+<img 
+src="bastani.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+بستنی اسکوپی</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">50 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+
+
+
+
+</div>
+</section>
+<section class="section" id="fries">
+<h2 class="section-title">آیس کافی</h2>
+<div class="menu-list">
+
+
+<article class="food-card" data-name="آیس اسپرولینا">
+<img 
+src="espero.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس اسپرولینا</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">260 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس توت فرنگی">
+<img 
+src="c.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس توت فرنگی</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس نارگیل">
+<img 
+src="a.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس نارگیل</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">260 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس وانیل">
+<img 
+src="bac21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس وانیل</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+
+<article class="food-card" data-name="آیس آمریکانو">
+<img 
+src="aa.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس آمریکانو</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس موکا">
+<img 
+src="moka.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس موکا</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">160 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس لاته">
+<img 
+src="late.png">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس لاته</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">140 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس کارامل">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس کارامل</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">160 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+<article class="food-card" data-name="آیس کوکی">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس کوکی</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">180 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس فندق">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس فندق</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس نوتلا">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس نوتلا</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">170 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+<article class="food-card" data-name="آیس آپریش">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس آپریش</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">140 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="آیس ماچا">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+آیس ماچا</h3></div>
+<p class="description">قهوه اسپرسو </p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+
+</div>
+</section>
+<section class="section" id="cake">
+<h2 class="section-title">کیک کوکی</h2>
+<div class="menu-list">
+
+
+
+<article class="food-card" data-name="کیک شکلاتی">
+<img 
+src="i.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+کیک شکلاتی</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="تیرامیسو">
+<img 
+src="tiramiso.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+تیرامیسو</h3></div>
+<p class="description">بستنی تیرامیسو</p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چیز کیک مارس">
+<img 
+src="mars.jpeg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چیز کیک مارس</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چیز کیک لوتوس">
+<img 
+src="lotous.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چیز کیک لوتوس</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چیز کیک نوتلا">
+<img 
+src="nutella.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چیز کیک نوتلا</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="سن سباستین">
+<img 
+src="sen.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+سن سباستین</h3></div>
+<p class="description"></p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+
+<article class="food-card" data-name="کوکی">
+<img 
+src="coky.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+کوکی</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">70 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+
+</div>
+</section>
+<section class="section" id="shake">
+<h2 class="section-title">شیک</h2>
+<div class="menu-list">
+
+
+<article class="food-card" data-name="شیک نوتلا">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شیک نوتلا</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+<article class="food-card" data-name="شاتوت رزبری">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شاتوت رزبری</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="معجون پسته">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+معجون پسته</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="کارامل">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+کارامل</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="اورئو">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+اورئو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="موز نوتلا">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+موز نوتلا</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="بلوبری">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+بلوبری</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">240 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="نسکافه">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+نسکافه</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شکلات">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شکلات</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لوتوس">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لوتوس</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">250 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="بادام زمینی">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+بادام زمینی</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">250 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="زعفران">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+زعفران</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="انبه">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+انبه</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">200 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لوتوس بیسکوف">
+<img 
+src="biscof.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لوتوس بیسگوف</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">350 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شیک پروتئینی">
+<img 
+src="majon.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شیک پروتئینی</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">400 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شیک انبه اسپشیال">
+<img 
+src="anbe.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شیک انبه اسپشیال</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">400 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شیک توت فرنگی اسپشیال">
+<img 
+src="tot.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شیک توت فرنگی اسپشیال</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">400 تومان</span>
+</div>
+</div>
+</article>
+
+
+</div>
+</section>
+<section class="section" id="bar-garm">
+<h2 class="section-title">بار گرم</h2>
+<div class="menu-list">
+
+
+<article class="food-card" data-name="21 چاکلت">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+21 چاکلت</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="هات چاکلت">
+<img 
+src="aho.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+هات چاکلت</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">120-130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="فندق چاکلت">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+فندق چاکلت</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">130-140 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="وایت چاکلت">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+وایت چاکلت</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">110-120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="پینک چاکلت">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+پینک چاکلت</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">110-130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="دارک چاکلت">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+دارک چاکلت</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">160-180 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شیر عسل">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شیر عسل</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">100-110 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="شیر کاکائو">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شیر کاکائو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">100-110 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="پفی چاکو">
+<img 
+src="21.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+پفی چاکو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">220 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+
+
+
+
+</div>
+</section>
+<section class="section" id="bar-sard">
+<h2 class="section-title">بار سرد</h2>
+<div class="menu-list">
+
+
+
+<article class="food-card" data-name="کاکتوس دریایی">
+<img 
+src="cactus.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+کاکتوس دریایی</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">160 تومان</span>
+</div>
+</div>
+</article>
+
+
+<article class="food-card" data-name="شات خاطره">
+<img 
+src="g.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+شات خاطره</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="لیموناد">
+<img 
+src="e.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+لیموناد</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="موهیتو">
+<img 
+src="mohito.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+موهیتو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="رد موهیتو">
+<img 
+src="zereshk.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+رد موهیتو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="بلو موهیتو">
+<img 
+src="esperolina2.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+بلو موهیتو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="رز موهیتو">
+<img 
+src="g.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+رز موهیتو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">150 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+</div>
+</section>
+<section class="section" id="chay-bar">
+<h2 class="section-title">چای بار</h2>
+<div class="menu-list">
+
+
+
+
+<article class="food-card" data-name="چای کلاسیک">
+<img 
+src="h.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای کلاسیک</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">50 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای نبات">
+<img 
+src="nabat.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای نبات</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">60 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای زعفران">
+<img 
+src="zaferon2.jpeg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای زعفران</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">70 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای باقلوا">
+<img 
+src="chay baghlava.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای باقلوا</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">100 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="دمنوش سرماخوردگی">
+<img 
+src="sarma.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+دمنوش سرماخوردگی</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="دمنوش اسطوخودوس">
+<img 
+src="osto.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+دمنوش اسطوخودوس</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="دمنوش بابونه">
+<img 
+src="babone.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+دمنوش بابونه</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="دمنوش آرامش">
+<img 
+src="aram.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+دمنوش آرامش</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">120 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+<article class="food-card" data-name="چای ماسالا">
+<img 
+src="masala.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای ماسالا</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای کرک">
+<img 
+src="kerak.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای کرک</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">130 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای کرک زعفران">
+<img 
+src="kerak z.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای کرک زعفران</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">170 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+<article class="food-card" data-name="چای دارچین">
+<img 
+src="chay.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای دارچین</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">60 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای هل">
+<img 
+src="h.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای هل</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">60 تومان</span>
+</div>
+</div>
+</article>
+
+<article class="food-card" data-name="چای آلبالو">
+<img 
+src="chay albalo.jpg">
+<div class="food-info">
+<div class="food-title-row"><h3 class="food-title">
+چای آلبالو</h3></div>
+<p class="description"><p><div class="food-bottom">
+<span class="price">100 تومان</span>
+</div>
+</div>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</section>
+<p class="empty-message" id="emptyMessage"> پیدا نشد </p></main>
+<button class="search-fab" id="searchToggle" aria-label="غذا جستجوی"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"></circle>
+<path d="M16 16l4.2 4.2"></path>
+</svg>
+</button>
+<div class="search-panel" id="searchPanel">
+<input type="search" id="searchInput" placeholder=" جستجو... "aria-label="غذا جستجوی">
+</div>
+<script>
+(() => {
+  const mainNav = document.querySelector('.main-nav');
+  const navLinks = [...mainNav.querySelectorAll('a')];
+  const navIndicator = mainNav.querySelector('.nav-indicator');
+  const siteHeader = document.querySelector('.site-header');
+
+  function moveNavIndicator(link) {
+    if (!link || !navIndicator || !mainNav) return;
+    // حساب موقع دسته با توجه به جای واقعی آن در نوار اسکرول‌پذیر (حتی در حالت RTL)
+    const navRect = mainNav.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    const scrollLeft = mainNav.scrollLeft;
+    navIndicator.style.left = (linkRect.left - navRect.left + scrollLeft) + 'px';
+    navIndicator.style.right = 'auto';
+    navIndicator.style.width = linkRect.width + 'px';
+  }
+
+  function setActiveLink(link, scrollIntoView = false) {
+    if (!link) return;
+    navLinks.forEach(item => item.classList.toggle('active', item === link));
+    moveNavIndicator(link);
+    if (scrollIntoView) link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      manualNavUntil = Date.now() + 1400;
+      setActiveLink(link, true)
+  
+      requestAnimationFrame(() => requestAnimationFrame(() => moveNavIndicator(link)));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+      window.setTimeout(() => {
+        manualNavUntil = 0;
+        moveNavIndicator(mainNav.querySelector('a.active'));
+        requestScrollUpdate();
+      }, 1450);
+    });
+  });
+
+  let scrollTicking = false;
+  let manualNavUntil = 0;
+  function updateActiveCategoryFromScroll() {
+    scrollTicking = false;
+  
+    if (Date.now() < manualNavUntil) return;
+    const activationLine = (siteHeader ? siteHeader.getBoundingClientRect().bottom : 0) + 30;
+    const sections = [...document.querySelectorAll('main > .section')];
+    let currentSection = sections[0];
+    for (const section of sections) {
+      const heading = section.querySelector('.section-title');
+      if (heading && heading.getBoundingClientRect().top <= activationLine) currentSection = section;
+      else if (heading) break;
+    }
+    if (currentSection) {
+      const activeLink = navLinks.find(link => link.getAttribute('href') === '#' + currentSection.id);
+      if (activeLink && !activeLink.classList.contains('active')) setActiveLink(activeLink, true);
+      else if (activeLink) moveNavIndicator(activeLink);
+    }
+  }
+  function requestScrollUpdate() {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(updateActiveCategoryFromScroll);
+    }
+  }
+  window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+  mainNav.addEventListener('scroll', () => moveNavIndicator(mainNav.querySelector('a.active')), { passive: true });
+  window.addEventListener('resize', () => { moveNavIndicator(mainNav.querySelector('a.active')); requestScrollUpdate(); });
+  window.addEventListener('load', () => { moveNavIndicator(mainNav.querySelector('a.active') || navLinks[0]); requestScrollUpdate(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => moveNavIndicator(mainNav.querySelector('a.active') || navLinks[0]));
+
+  const menuButton = document.getElementById('menuButton');
+  const sideDrawer = document.getElementById('sideDrawer');
+  const drawerBackdrop = document.getElementById('drawerBackdrop');
+  const drawerClose = document.getElementById('drawerClose');
+  function openDrawer() {
+    document.body.classList.add('drawer-open');
+    sideDrawer.setAttribute('aria-hidden', 'false');
+    drawerBackdrop.setAttribute('aria-hidden', 'false');
+  }
+  function closeDrawer() {
+    document.body.classList.remove('drawer-open');
+    sideDrawer.setAttribute('aria-hidden', 'true');
+    drawerBackdrop.setAttribute('aria-hidden', 'true');
+  }
+  menuButton.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  drawerBackdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeDrawer(); });
+
+  const searchPanel = document.getElementById('searchPanel');
+  const searchInput = document.getElementById('searchInput');
+  const emptyMessage = document.getElementById('emptyMessage');
+  document.getElementById('searchToggle').addEventListener('click', () => {
+    searchPanel.classList.toggle('open');
+    if (searchPanel.classList.contains('open')) searchInput.focus();
+    else { searchInput.value = ''; filterFoods(''); }
+  });
+  searchInput.addEventListener('input', () => filterFoods(searchInput.value));
+  function filterFoods(query) {
+    const normalized = query.trim().toLowerCase();
+    let visibleCount = 0;
+    document.querySelectorAll('.food-card').forEach(card => {
+      const name = (card.dataset.name || card.innerText).toLowerCase();
+      const visible = name.includes(normalized);
+      card.style.display = visible ? 'flex' : 'none';
+      if (visible) visibleCount++;
+    });
+    document.querySelectorAll('main > .section').forEach(section => {
+      const hasVisible = [...section.querySelectorAll('.food-card')].some(card => card.style.display !== 'none');
+      section.style.display = hasVisible ? 'block' : 'none';
+    });
+    emptyMessage.style.display = visibleCount ? 'none' : 'block';
+    requestScrollUpdate();
+  }
+})();
+</script>
+</body>
+</html>
